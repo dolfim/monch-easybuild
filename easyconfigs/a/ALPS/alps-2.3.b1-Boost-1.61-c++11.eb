@@ -28,13 +28,11 @@ dependencies = [
 ]
 versionsuffix='-Python-%s-%s' % (pyver,cxxstd)
 
-#configopts = '-DCMAKE_CXX_FLAGS="-std=c++14"'
-
 modextravars = {
     'ALPS_ROOT': '$root',
 }
 modextrapaths = {
-    'PYTHONPATH': '$root/lib'
+    'PYTHONPATH': 'lib/'
 }
 
 sanity_check_paths={

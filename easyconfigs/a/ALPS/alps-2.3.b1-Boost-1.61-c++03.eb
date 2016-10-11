@@ -33,7 +33,7 @@ modextravars = {
     'ALPS_ROOT': '$root',
 }
 modextrapaths = {
-    'PYTHONPATH': '$root/lib'
+    'PYTHONPATH': ['lib/']
 }
 
 sanity_check_paths={
