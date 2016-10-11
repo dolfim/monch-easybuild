@@ -41,3 +41,6 @@ eb path/to/config.eb --parallel=12 -r -k -D    # dry-run
 * ```-D```: dry run.
 * ```--parallel=X```: build in parallel with X processes. The number will be passed to *make* as the *-j* option.
 
+## Guides
+Some guides:
+* [guides/easyblocks.md](guides/easyblocks.md)
