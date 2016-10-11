@@ -33,9 +33,11 @@ Note: Dependencies will be found only if the follow the standard EasyBuild namin
 
 
 ```bash
-eb path/to/config.eb -r -k -D    # dry-run
+eb path/to/config.eb --parallel=12 -r -k -D    # dry-run
 ```
 
 * ```-k```: build dependencies
 * ```-r```: for for dependencies in the standard path
 * ```-D```: dry run.
+* ```--parallel=X```: build in parallel with X processes. The number will be passed to *make* as the *-j* option.
+
