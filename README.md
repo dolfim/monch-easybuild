@@ -27,3 +27,15 @@ For convenience we setup a script which loads the build environment for your:
 ```bash
 source ./setup.sh
 ```
+
+### Build a new module and its depencies
+Note: Dependencies will be found only if the follow the standard EasyBuild naming convention.
+
+
+```bash
+eb path/to/config.eb -r -k -D    # dry-run
+```
+
+* ```-k```: build dependencies
+* ```-r```: for for dependencies in the standard path
+* ```-D```: dry run.
