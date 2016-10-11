@@ -24,7 +24,7 @@ pyver = '2.7.10'
 
 dependencies = [
     ('CMake', '3.6.0', '', ('dummy','')),
-    ('Boost', boostver, '-Python-%s%s' % (pyver,cxxver)),
+    ('Boost', boostver, '-Python-%s-%s' % (pyver,cxxstd)),
     ('HDF5', '1.8.15', '-serial')
 ]
 versionsuffix='-Python-%s-%s' % (pyver,cxxstd)

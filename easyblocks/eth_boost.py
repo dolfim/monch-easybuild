@@ -160,7 +160,9 @@ class ETH_Boost(EasyBlock):
     def build_step(self):
         """Build Boost with bjam tool."""
 
-        bjamoptions = " --prefix=%s" % self.objdir
+
+        cxxflags = os.environ['CXXFLAGS']
+        bjamoptions = " --prefix=%s cxxflags='%s'" % (self.objdir, cxxflags)
 
         # specify path for bzip2/zlib if module is loaded
         for lib in ["bzip2", "zlib"]:
@@ -173,13 +175,10 @@ class ETH_Boost(EasyBlock):
         if self.cfg['parallel']:
             paracmd = "-j %s" % self.cfg['parallel']
 
-        if self.cfg['toolsetopt']:
-            bjamoptions = " %s" % self.cfg['toolsetopt']
-
         if self.cfg['boost_mpi']:
             self.log.info("Building boost_mpi library")
-
-            bjammpioptions = "%s --user-config=user-config.jam --with-mpi" % bjamoptions
+            
+            bjammpioptions = "cxxflags='%s' --user-config=user-config.jam --with-mpi" % (cxxflags)
 
             # build mpi lib first
             # let bjam know about the user-config.jam file we created in the configure step
