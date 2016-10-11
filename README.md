@@ -15,7 +15,7 @@ module use /apps/monch/p501/RH6.7/easybuild/modules/all
 
 If you have custom installed modules in your home:
 ```bash
-module use $HOME/apps/monch/easybuild/modules/all
+module use $HOME/apps/eb_monch/easybuild/modules/all
 ```
 
 ## Develop modules
