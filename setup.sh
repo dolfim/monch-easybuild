@@ -12,13 +12,31 @@ fi
 # Not needed, since CSCS setup will save in directory
 #export EASYBUILD_REPOSITORYPATH="git@git.comp.phys.ethz.ch:codes/monch-easybuild.git,ebfiles_repo/"$hostName
 
+GROUP_EBPATH=/apps/monch/p501/RH6.7
+HOME_EBPATH=$HOME/apps/eb_$hostName
+
 if [ -z "$1" ]; then
-    echo "You have to pass the PREFIX as argument"
-    return
+    echo "You have to pass the PREFIX as argument. You can select one of the standard paths below or quit."
+    PS3="Select a PREFIX path: "
+    options=("$HOME_EBPATH" "$GROUP_EBPATH" "Quit")
+    select opt in "${options[@]}"; do 
+        case "$REPLY" in
+    
+        1 ) PROJ=$HOME_EBPATH; break;;
+        2 ) PROJ=$GROUP_EBPATH; break;;
+        3 ) return ;;
+        q ) return ;;
+    
+        *) echo "Invalid option. Try another one.";continue;;
+    
+        esac
+    done
+else
+    PROJ=$1
 fi
 
 REPO_ROOT=$(dirname $(readlink -f $BASH_SOURCE))
-PROJ=$1
+
 
 source /apps/common/UES/easybuild/setup.sh $PROJ
 
@@ -28,4 +46,4 @@ export EASYBUILD_INCLUDE_EASYBLOCKS=$REPO_ROOT'/easyblocks/*py,'$EASYBUILD_INCLU
 
 ## Use the group paths
 module use /apps/monch/UES/RH6.7-16.04/easybuild/modules/all
-module use /apps/monch/p501/RH6.7/easybuild/modules/all
+module use $GROUP_EBPATH/easybuild/modules/all
