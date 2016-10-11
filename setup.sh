@@ -24,7 +24,7 @@ source /apps/common/UES/easybuild/setup.sh $PROJ
 
 export EASYBUILD_SOURCEPATH=$HOME/src
 export EASYBUILD_ROBOT_PATHS="$REPO_ROOT/easyconfigs/:$EASYBUILD_ROBOT_PATHS:"
-export EASYBUILD_INCLUDE_EASYBLOCKS="$REPO_ROOT/easyblocks/*py $EASYBUILD_INCLUDE_EASYBLOCKS"
+export EASYBUILD_INCLUDE_EASYBLOCKS=$REPO_ROOT'/easyblocks/*py,'$EASYBUILD_INCLUDE_EASYBLOCKS
 
 ## Use the group paths
 module use /apps/monch/UES/RH6.7-16.04/easybuild/modules/all
