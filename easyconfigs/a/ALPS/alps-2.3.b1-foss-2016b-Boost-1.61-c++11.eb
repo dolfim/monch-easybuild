@@ -1,0 +1,42 @@
+easyblock = 'CMakeMake'
+separate_build_dir = True
+
+name = 'ALPS'
+version = '2.3.b1-r7723'
+cxxstd = 'c++11'
+
+homepage = "http://alps.comp-phys.org/"
+description = "ALPS project"
+
+toolchain = {'name': 'foss', 'version': '2016b'}
+toolchainopts = {'cstd': cxxstd}
+
+sources = ['%(namelower)s-%(version)s-src.tar.gz']
+source_urls = ['http://alps.comp-phys.org/static/software/releases/']
+
+patches = [
+    #'ALPS-find-python.patch'
+]
+
+boostver = '1.61.0'
+pyver = '2.7.10'
+
+dependencies = [
+    ('CMake', '3.6.0', '', ('dummy','')),
+    ('Boost', boostver, '-Python-%s-%s' % (pyver,cxxstd)),
+    ('HDF5', '1.8.15', '-serial')
+]
+versionsuffix='-Python-%s-%s' % (pyver,cxxstd)
+
+modextravars = {
+    'ALPS_ROOT': '$root',
+}
+modextrapaths = {
+    'PYTHONPATH': 'lib/'
+}
+
+sanity_check_paths={
+    'files': ['lib/libalps.so'],
+    'dirs': ['include/alps', 'bin/', 'share/'],
+}
+
